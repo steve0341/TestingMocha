@@ -1,11 +1,17 @@
 function AuthController() {
   var roles = [];
+
+  function setRoles(roles) {
+    this.roles = roles
+  }
+
   function isAuthorized(neededRole) {
     return this.roles.indexOf(neededRole) >= 0 ;
   }
 
   function isAuthorizedSync(neededRole, cb) {
-    setTimeout(function () { cb(roles.indexOf(neededRole) >= 0)}, 2100);
+    that = this
+    setTimeout(function () { cb(that.roles.indexOf(neededRole) >= 0)}, 2100);
   }
 
   function exists(obj) {
